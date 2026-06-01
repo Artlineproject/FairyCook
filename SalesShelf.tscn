@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://20a5g8licvhh"]
+
+[ext_resource type="Script" path="res://sales_shelf.gd" id="1_uisv5"]
+[ext_resource type="Script" path="res://Script/components/InventoryComponent.gd" id="2_oapt2"]
+[ext_resource type="Texture2D" uid="uid://dh7myh3tm6vwr" path="res://Assets/buildings/Etagere.png" id="2_rdeqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05fyc"]
+size = Vector2(30, 30)
+
+[node name="SalesShelf" type="StaticBody2D" groups=["buildings", "storage"]]
+collision_layer = 8
+script = ExtResource("1_uisv5")
+storage_slots = 6
+world_texture = ExtResource("2_rdeqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rdeqc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_05fyc")
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("2_oapt2")
+inventory_id = "storage:shop"
+slot_count = 6
+sales_front_row_size = 3
+sales_perish_control_enabled = true
